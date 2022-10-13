@@ -266,6 +266,9 @@ public class RegionCommand implements CommandExecutor, TabCompleter {
 				if ("remove".startsWith(args[1].toLowerCase())) {
 					result.add("remove");
 				}
+				if ("list".startsWith(args[1].toLowerCase())) {
+					result.add("list");
+				}
 			} else if (coreOptions.contains(args[0].toLowerCase()) && !args[0].equalsIgnoreCase("wand") && !args[0].equalsIgnoreCase("create")) {
 				for (Region r : RegionManager.get().getRegions()) {
 					if (r.getName().toLowerCase().startsWith(args[1].toLowerCase())) {
@@ -282,7 +285,7 @@ public class RegionCommand implements CommandExecutor, TabCompleter {
 				}
 			}
 		} else if (args.length == 4) {
-			if (args[0].equalsIgnoreCase("whitelist")) {
+			if (args[0].equalsIgnoreCase("whitelist") && !args[1].equalsIgnoreCase("list")) {
 				for (Player p : Bukkit.getOnlinePlayers()) {
 					if (p.getName().toLowerCase().startsWith(args[3].toLowerCase())) {
 						result.add(p.getName());
