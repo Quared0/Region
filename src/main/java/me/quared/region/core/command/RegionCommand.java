@@ -37,7 +37,7 @@ public class RegionCommand implements CommandExecutor, TabCompleter {
 			if (args.length >= 1) {
 				switch (args[0].toLowerCase()) {
 					case "create" -> {
-						if (!p.hasPermission("region.manage")) {
+						if (!p.hasPermission("region.create")) {
 							p.sendMessage(StringUtil.getMessage("no-permission"));
 							return false;
 						}
@@ -64,7 +64,7 @@ public class RegionCommand implements CommandExecutor, TabCompleter {
 						}
 					}
 					case "rename" -> {
-						if (!p.hasPermission("region.manage")) {
+						if (!p.hasPermission("region.rename")) {
 							p.sendMessage(StringUtil.getMessage("no-permission"));
 							return false;
 						}
@@ -86,7 +86,7 @@ public class RegionCommand implements CommandExecutor, TabCompleter {
 						}
 					}
 					case "resize" -> {
-						if (!p.hasPermission("region.manage")) {
+						if (!p.hasPermission("region.resize")) {
 							p.sendMessage(StringUtil.getMessage("no-permission"));
 							return false;
 						}
@@ -108,7 +108,7 @@ public class RegionCommand implements CommandExecutor, TabCompleter {
 						}
 					}
 					case "remove", "delete" -> {
-						if (!p.hasPermission("region.manage")) {
+						if (!p.hasPermission("region.remove")) {
 							p.sendMessage(StringUtil.getMessage("no-permission"));
 							return false;
 						}
@@ -123,7 +123,7 @@ public class RegionCommand implements CommandExecutor, TabCompleter {
 						}
 					}
 					case "whereami", "current" -> {
-						if (!p.hasPermission("region.view")) {
+						if (!p.hasPermission("region.current")) {
 							p.sendMessage(StringUtil.getMessage("no-permission"));
 							return false;
 						}
@@ -135,7 +135,7 @@ public class RegionCommand implements CommandExecutor, TabCompleter {
 						}
 					}
 					case "teleport" -> {
-						if (!p.hasPermission("region.manage")) {
+						if (!p.hasPermission("region.teleport")) {
 							p.sendMessage(StringUtil.getMessage("no-permission"));
 							return false;
 						}
@@ -151,17 +151,13 @@ public class RegionCommand implements CommandExecutor, TabCompleter {
 						}
 					}
 					case "wand" -> {
-						if (!p.hasPermission("region.manage")) {
+						if (!p.hasPermission("region.wand")) {
 							p.sendMessage(StringUtil.getMessage("no-permission"));
 							return false;
 						}
 						rm.getWand().giveTo(p);
 					}
 					case "whitelist" -> {
-						if (!p.hasPermission("region.manage")) {
-							p.sendMessage(StringUtil.getMessage("no-permission"));
-							return false;
-						}
 						if (args.length >= 3) {
 							Region region = rm.getRegion(args[2]);
 							if (region == null) {
@@ -170,6 +166,10 @@ public class RegionCommand implements CommandExecutor, TabCompleter {
 							}
 							switch (args[1].toLowerCase()) {
 								case "add" -> {
+									if (!p.hasPermission("region.whitelist.add")) {
+										p.sendMessage(StringUtil.getMessage("no-permission"));
+										return false;
+									}
 									if (args.length >= 4) {
 										Player to = Bukkit.getPlayer(args[3]);
 										if (to != null) {
@@ -187,6 +187,10 @@ public class RegionCommand implements CommandExecutor, TabCompleter {
 									}
 								}
 								case "remove" -> {
+									if (!p.hasPermission("region.whitelist.remove")) {
+										p.sendMessage(StringUtil.getMessage("no-permission"));
+										return false;
+									}
 									if (args.length == 4) {
 										Player to = Bukkit.getPlayer(args[3]);
 										if (to != null) {
@@ -204,6 +208,10 @@ public class RegionCommand implements CommandExecutor, TabCompleter {
 									}
 								}
 								case "view", "list" -> {
+									if (!p.hasPermission("region.whitelist.list")) {
+										p.sendMessage(StringUtil.getMessage("no-permission"));
+										return false;
+									}
 									rm.openWhitelistMenu(p, region, 0);
 								}
 							}
@@ -212,7 +220,7 @@ public class RegionCommand implements CommandExecutor, TabCompleter {
 						}
 					}
 					case "menu" -> {
-						if (!p.hasPermission("region.view")) {
+						if (!p.hasPermission("region.menu")) {
 							p.sendMessage(StringUtil.getMessage("no-permission"));
 							return false;
 						}
@@ -227,7 +235,7 @@ public class RegionCommand implements CommandExecutor, TabCompleter {
 						}
 					}
 					default -> {
-						if (!p.hasPermission("region.view")) {
+						if (!p.hasPermission("region.menu")) {
 							p.sendMessage(StringUtil.getMessage("no-permission"));
 							return false;
 						}

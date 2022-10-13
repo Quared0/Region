@@ -8,9 +8,25 @@ commands:
   region:
     description: "Core region command."
 permissions:
-  region.view:
-    description: "Player permissions"
-  region.manage:
-    description: "Admin permissions"
+  region.create:
+    description: "Permission to create a region"
+  region.remove:
+    description: "Permission to remove a region"
+  region.menu:
+    description: "Permission to open the region(s) menu"
+  region.rename:
+    description: "Permission to rename a region"
+  region.resize:
+    description: "Permission to resize a region"
+  region.whitelist.remove:
+    description: "Permission to remove from the whitelist"
+  region.whitelist.add:
+    description: "Permission to add to the whitelist"
+  region.whitelist.list:
+    description: "Permission to view the whitelist"
+  region.teleport:
+    description: "Permission to teleport to a region"
+  region.current:
+    description: "Permission to see what region they are currently in."
   region.bypass:
     description: "Permission to bypass region whitelist rules"
