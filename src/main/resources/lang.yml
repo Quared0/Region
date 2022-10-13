@@ -1,0 +1,39 @@
+messages:
+  global-prefix: "&6&lRegion &7| &r"
+
+  no-permission: "&cYou do not have permission!"
+  player-only: "&cOnly a player can execute this command!"
+  console-only: "&cOnly console can execute this command!"
+  invalid-usage: "&cInvalid usage! %s"
+
+  no-selection: "&cYou have not selected an area!"
+  no-region: "&cPlease specify a region."
+  invalid-region: "&cThat region does not exist!"
+
+  rename-start: "&aType the name to rename to in chat, type ''exit'' to cancel."
+  rename-cancel: "&cCancelled renaming."
+  rename-too-long: "&cName too long. Please try again."
+  rename-success: "&aSuccessfully renamed ''%s'' to ''%s''."
+
+  resize-success: "&aSuccessfully resized the area to your current selection."
+
+  create-success: "&aSuccessfully created region!"
+  overlaps-region: "&cThe area selected overlaps the existing region, ''%s''!"
+  existing-region: "&cThat region already exists!"
+
+  remove-success: "&aSuccessfully deleted region!"
+
+  whitelist-add: "&aSuccessfully added player to the whitelist."
+  whitelist-remove: "&aSuccessfully removed player from the whitelist."
+  already-whitelisted: "&cThis player is already whitelisted!"
+  not-whitelisted: "&cThis player is not whitelisted!"
+  invalid-player: "&cThis player is invalid!"
+  no-player: "&cYou must specify a player!"
+
+  current-success: "&aYou are currently in the region ''%s''."
+  current-none: "&eYou are not in any region!"
+
+  player-not-whitelisted: "&cYou may not do that here!"
+
+  position1-set: "&aSuccessfully set Position 1 to %s."
+  position2-set: "&aSuccessfully set Position 2 to %s."

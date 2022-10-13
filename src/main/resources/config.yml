@@ -1,0 +1,99 @@
+item:
+  wand:
+    material: STICK
+    name: "&d&lRegion Wand &7[Use]"
+gui:
+  regions:
+    title: "Regions Menu"
+    size: 45
+    border: BLACK_STAINED_GLASS_PANE
+    items:
+      entry:
+        material: GRASS_BLOCK
+        name: "&r&l%s &7[Click]"
+        lore:
+          - " "
+          - "&7Click for Info"
+      close:
+        material: BARRIER
+        name: "&c&lClose Menu &7[Click]"
+      next-page:
+        material: ARROW
+        name: "&e&lNext Page &7[Click]"
+      previous-page:
+        material: ARROW
+        name: "&e&lPrevious Page &7[Click]"
+  region:
+    title: "Region: %s" # params: region name
+    size: 45
+    border: BLACK_STAINED_GLASS_PANE
+    items:
+      info:
+        material: REDSTONE_TORCH
+        name: "&r&l%s" # params: region name
+        lore:
+          - "&7This is Region Information"
+          - "&7for ''%s''."
+      whitelist:
+        material: PAPER
+        name: "&e&lWhitelist &7[Click]"
+        lore:
+          - "&7View the whitelist."
+      rename:
+        material: OAK_SIGN
+        name: "&e&lRename &7[Click]"
+        lore:
+          - "&7Rename the region."
+      teleport:
+        material: ENDER_PEARL
+        name: "&d&lTeleport &7[Click]" # params: region name
+        lore:
+          - "&7Teleport to the region."
+      resize:
+        material: ARROW
+        name: "&e&lResize &7[Click]" # params: region name
+        lore:
+          - "&7Set the region's size to"
+          - "&7your current selection."
+      close:
+        material: BARRIER
+        name: "&c&lClose Menu &7[Click]"
+  whitelist:
+    title: "Whitelist List: %s"
+    size: 45
+    border: BLACK_STAINED_GLASS_PANE
+    items:
+      entry:
+        material: PLAYER_HEAD
+        name: "&f&l%s &7[Click]"
+        lore:
+          - " "
+          - "&cClick to Remove"
+      close:
+        material: BARRIER
+        name: "&c&lClose Menu &7[Click]"
+      info:
+        material: REDSTONE_TORCH
+        name: "&r&l%s" # params: region name
+        lore:
+          - "&7This is the whitelist"
+          - "&7list for ''%s''."
+      howto:
+        material: OAK_SIGN
+        name: "&e&lHow to Add"
+        lore:
+          - "&7To add a player to the whitelist,"
+          - "&7use /region whitelist add <region> <player>"
+      next-page:
+        material: ARROW
+        name: "&e&lNext Page &7[Click]"
+      previous-page:
+        material: ARROW
+        name: "&e&lPrevious Page &7[Click]"
+
+sql:
+  host: "mysql.example.com"
+  port: 3306
+  username: "yourusername"
+  password: "yoursecurepassword"
+  database: "yourdatabase"

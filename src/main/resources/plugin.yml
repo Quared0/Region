@@ -1,0 +1,16 @@
+name: Region
+version: '${project.version}'
+main: me.quared.region.RegionPlugin
+api-version: 1.19
+authors: [ Quared ]
+description: Plugin for Senior Team Trial Task
+commands:
+  region:
+    description: "Core region command."
+permissions:
+  region.view:
+    description: "Player permissions"
+  region.manage:
+    description: "Admin permissions"
+  region.bypass:
+    description: "Permission to bypass region whitelist rules"
