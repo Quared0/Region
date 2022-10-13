@@ -11,10 +11,11 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
-import org.bukkit.event.block.BlockFertilizeEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.PlayerBucketEmptyEvent;
 import org.bukkit.event.player.PlayerBucketFillEvent;
+import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 public class RegionInteractListeners implements Listener {
@@ -22,6 +23,19 @@ public class RegionInteractListeners implements Listener {
 	@EventHandler
 	public void event(BlockBreakEvent event) {
 		interact(event.getPlayer(), event.getBlock(), event);
+	}
+
+	public void interact(Player p, Block b, Cancellable event) {
+		RegionManager rm = RegionManager.get();
+		if (p.hasPermission("region.bypass")) return;
+		if (rm.hasRegionAt(b.getLocation())) {
+			Region r = rm.getRegionAt(b.getLocation());
+			if (!r.isWhitelisted(p.getUniqueId())) {
+				p.sendMessage(StringUtil.getMessage("player-not-whitelisted"));
+				p.spawnParticle(Particle.SMOKE_NORMAL, b.getLocation().clone().add(0, 1, 0), 10);
+				event.setCancelled(true);
+			}
+		}
 	}
 
 	@EventHandler
@@ -47,17 +61,16 @@ public class RegionInteractListeners implements Listener {
 		}
 	}
 
-	public void interact(Player p, Block b, Cancellable event) {
-		RegionManager rm = RegionManager.get();
-		if (p.hasPermission("region.bypass")) return;
-		if (rm.hasRegionAt(b.getLocation())) {
-			Region r = rm.getRegionAt(b.getLocation());
-			if (!r.isWhitelisted(p.getUniqueId())) {
-				p.sendMessage(StringUtil.getMessage("player-not-whitelisted"));
-				p.spawnParticle(Particle.SMOKE_NORMAL, b.getLocation().clone().add(0, 1, 0), 10);
-				event.setCancelled(true);
-			}
+	@EventHandler
+	public void event(EntityDamageByEntityEvent event) {
+		if (event.getDamager() instanceof Player p) {
+			interact(p, event.getEntity().getLocation().getBlock(), event);
 		}
+	}
+
+	@EventHandler
+	public void event(PlayerInteractEntityEvent event) {
+		interact(event.getPlayer(), event.getPlayer().getLocation().getBlock(), event);
 	}
 
 }
